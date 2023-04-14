@@ -1,0 +1,35 @@
+{
+  "name": "mern_stack_project",
+  "version": "1.0.0",
+  "description": "Social media App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuskade1999/Mern_Stack_Project.git"
+  },
+  "author": "Bhushan Bhuskade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhuskade1999/Mern_Stack_Project/issues"
+  },
+  "homepage": "https://github.com/bhuskade1999/Mern_Stack_Project#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.35.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "nodemailer": "^6.9.1"
+  }
+}
