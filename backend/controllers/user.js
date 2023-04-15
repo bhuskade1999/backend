@@ -22,8 +22,7 @@ try{
       // if user regsiter successfully then it will automatically logged in
       const token = await user.generateToken()
       const options = {
-          expires : new Date(Date.now()+ 90*24*60*60*1000),
-          httpOnly:true
+          expires : new Date(Date.now()+ 90*24*60*60*1000)
       }
 
       res.status(201)
@@ -56,8 +55,7 @@ exports.login = async (req,res)=>{
         const token = await user.generateToken()
 
         const options = {
-            expires : new Date(Date.now()+ 90*24*60*60*1000),
-            httpOnly:true
+            expires : new Date(Date.now()+ 90*24*60*60*1000)
         }
 
         res.status(200)
@@ -75,7 +73,7 @@ exports.login = async (req,res)=>{
 exports.logout = async (req,res)=>{
     try{
          res.status(200)
-         .cookie("token",null,{expires:new Date(Date.now()),httpOnly:true})
+         .cookie("token",null,{expires:new Date(Date.now())})
          .json({success:true,message:"Logged Out successfully"})
 
     }catch(err){
