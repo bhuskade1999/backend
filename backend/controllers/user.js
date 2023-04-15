@@ -25,9 +25,12 @@ try{
           expires : new Date(Date.now()+ 90*24*60*60*1000)
       }
 
-      res.status(201)
-      .cookie("token",token,options)
-      .json({success:true,user, token})
+//       res.status(201)
+//       .cookie("token",token,options)
+//       .json({success:true,user, token})
+      
+      res.status(200)
+        .send({success:true,user, token})
 
 
 
