@@ -21,14 +21,16 @@ try{
 
       // if user regsiter successfully then it will automatically logged in
       const token = await user.generateToken()
-      const options = {
-          expires : new Date(Date.now()+ 90*24*60*60*1000),
-          httpOnly:true
-      }
+      // const options = {
+      //     expires : new Date(Date.now()+ 90*24*60*60*1000),
+      //     httpOnly:true
+      // }
 
-      res.status(201)
-      .cookie("token",token,options)
-      .json({success:true,user, token})
+      // res.status(201)
+      // .cookie("token",token,options)
+      // .json({success:true,user, token})
+      res.status(200)
+        .send({success:true,user, token})
 
 
 
@@ -55,14 +57,18 @@ exports.login = async (req,res)=>{
          
         const token = await user.generateToken()
 
-        const options = {
-            expires : new Date(Date.now()+ 90*24*60*60*1000),
-            httpOnly:true
-        }
-
+        // const options = {
+        //     expires : new Date(Date.now()+ 90*24*60*60*1000),
+        //     httpOnly:true
+        //}
         res.status(200)
-        .cookie("token",token,options)
-        .json({success:true,user, token})
+        .send({success:true,user, token})
+
+        // res.send({token:token ,user})
+
+        // res.status(200)
+        // .cookie("token",token,options)
+        // .json({success:true,user, token})
 
     }catch(err){
         res.status(500).send({success :false,message:err.message});
@@ -74,9 +80,22 @@ exports.login = async (req,res)=>{
 
 exports.logout = async (req,res)=>{
     try{
-         res.status(200)
-         .cookie("token",null,{expires:new Date(Date.now()),httpOnly:true})
-         .json({success:true,message:"Logged Out successfully"})
+        //  res.status(200)
+        //  .cookie("token",null,{expires:new Date(Date.now()),httpOnly:true})
+        //  .json({success:true,message:"Logged Out successfully"})
+
+      res
+    .clearCookie("newToken", {
+      sameSite: "none",
+      secure: true,
+    })
+    .status(200)
+    .send({ message: "User has been logged out." });
+
+
+
+
+
 
     }catch(err){
         res.status(500).send({success :false,message:err.message});
@@ -222,6 +241,8 @@ try{
     //logout when user is deleted
     res.status(200)
          .cookie("token",null,{expires:new Date(Date.now()),httpOnly:true})
+
+    
           
 // for deleteing every post of user
     for(let i=0;i<posts.length;i++){
